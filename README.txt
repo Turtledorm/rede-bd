@@ -6,44 +6,32 @@
 Usuário
 =======
 - Username
-- Senha
+- Senha (obviamente criptografada)
 - Nome completo
-- NUSP (se formos modelar a Rede Linux)
-- Curso (se formos modelar a Rede Linux)
-- E-mail
-- Último login (data)
-- Cota da impressora
+- Nº USP
+- Grupo (curso)
+- Quota de disco
+- Quota de impressão
+- Administrador?
 
-Admin
-=====
-Algo semelhante a Usuário?
-Talvez colocar uma opção booleana 'admin' em Usuário resolva...
+Máquina
+==========
+- Hostname
+- Endereço IP
+- MAC Adress
+- Sala (local)
+- Tipo (cliente/servidor)
 
-Computador
+Impressora
 ==========
 - Nome
+- Endereço IP
 - Marca
-- Versão
-- IP
+- Modelo
 - Sala (local)
-- Histórico de acessos?
 
-Servidor (Não sei muito sobre o tema, vou precisar pesquisar melhor)
-========
+Pacote
+======
 - Nome
-- IP
-
-Impressora (Também não faço muita ideia do que colocar...)
-==========
-- Nome
-- IP
-- Marca
-- Versão
-- Sala (local)
-- Histórico de impressões?
-
-Programa (Coisas como gcc, Logisim...)
-========
-- Nome
-- Versão
-- Data de instalação
+- Versão instalada
+- Dependências (outros pacotes)
