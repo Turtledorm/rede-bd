@@ -10,15 +10,16 @@ Usuário
 - Nome completo
 - Nº USP
 - Grupo (curso)
+- Data de cadastro
 - Quota de disco
 - Quota de impressão
 - Administrador?
 
 Máquina
-==========
+=======
 - Hostname
 - Endereço IP
-- MAC Adress
+- MAC Address
 - Sala (local)
 - Tipo (cliente/servidor)
 
