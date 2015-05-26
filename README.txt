@@ -17,7 +17,8 @@ e impressoras, bem como lista de pacotes (programas) instalados. Para cada usuá
 são guardados seus atributos de identificação, quotas, bem como listas de emails
 enviados e recebidos. Máquina consta com suas especificações e um histórico de
 acesso dos usuários. Impressora possui atributos técnicos e histórico de
-impressões. Por fim, email contém os dados de cada mensagem.
+impressões. Por fim, email contém os dados de cada mensagem (por simplicidade,
+são considerados emails enviados apenas entre usuários da rede local).
 
 Abaixo encontram-se os tópicos principais e um esboço dos respectivos atributos.
 
