@@ -20,13 +20,14 @@ Usuário
 =======
 - Username
 - Senha (criptografada)
-- Nome completo
 - Nº USP
+- Nome completo
 - Grupo (curso)
 - Data de cadastro
 - Quota de disco
 - Quota de impressão
 - Administrador? (sim/não)
+- Suspenso? (sim/não)
 
 Máquina
 =======
@@ -42,6 +43,7 @@ Impressora
 - Endereço IP
 - Marca
 - Modelo
+- Driver
 - Sala (local)
 
 Pacote
@@ -54,13 +56,13 @@ Acesso
 ======
 - Usuário
 - Máquina
-- Data
-- Horário
+- Data/hora
+- Meio (físico/ssh)
 
 Impressão
 =========
 - Usuário
 - Impressora
-- Data
-- Horário
+- Data/hora
+- Título do arquivo
 - Nº de folhas impressas
