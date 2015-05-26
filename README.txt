@@ -11,13 +11,15 @@ Integrantes:
 | Projeto: Rede de Computadores |
 +-------------------------------+
 
-Inspirados na Rede Linux do IME-USP, buscamos criar um Banco
-de Dados para uma rede de computadores. São contidas informações
-a respeito dos usuários, máquinas e impressoras, lista de pacotes
-(programas) instalados, bem como históricos de acesso e impressões
-de todos os usuários.
+Inspirados na Rede Linux do IME-USP, buscamos criar um Banco de Dados para uma
+rede de computadores. São contidas informações a respeito dos usuários, máquinas
+e impressoras, bem como lista de pacotes (programas) instalados. Para cada usuário,
+são guardados seus atributos de identificação, quotas, bem como listas de emails
+enviados e recebidos. Cada máquina consta com suas especificações e um histórico de
+acesso dos usuários. Cada impressora possui atributos técnicos e histórico de
+impressões. Por fim, email contém os dados de cada mensagem.
 
-Abaixo encontram-se os tópicos principais e seus respectivos atributos.
+Abaixo encontram-se os tópicos principais e um esboço dos respectivos atributos.
 
 Usuário
 =======
@@ -57,15 +59,24 @@ Pacote
 
 Acesso
 ======
-- Usuário
 - Máquina
+- Usuário
 - Data/hora
 - Meio (físico/ssh)
 
 Impressão
 =========
-- Usuário
 - Impressora
+- Usuário
 - Data/hora
 - Título do arquivo
+- Tamanho do arquivo
 - Nº de folhas impressas
+
+Email
+=====
+- De
+- Para/cópia/cópia oculta
+- Assunto
+- Corpo
+- Data/hora
