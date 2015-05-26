@@ -12,9 +12,12 @@ Integrantes:
 +-------------------------------+
 
 Inspirados na Rede Linux do IME-USP, buscamos criar um Banco
-de Dados para uma rede de computadores. Abaixo encontram-se
-os tópicos principais e suas respectivas informações a serem
-armazenadas.
+de Dados para uma rede de computadores. São contidas informações
+a respeito dos usuários, máquinas e impressoras, lista de pacotes
+(programas) instalados, bem como históricos de acesso e impressões
+de todos os usuários.
+
+Abaixo encontram-se os tópicos principais e seus respectivos atributos.
 
 Usuário
 =======
