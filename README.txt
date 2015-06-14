@@ -40,7 +40,7 @@ Máquina
 - Hostname
 - Endereço IP
 - MAC Address
-- Sala (local)
+- Sala (ID)
 - Tipo (cliente/servidor)
 
 Impressora
@@ -50,7 +50,13 @@ Impressora
 - Marca
 - Modelo
 - Driver
-- Sala (local)
+- Sala (ID)
+
+Sala
+====
+- ID
+- Nome
+- Localização
 
 Pacote
 ======
