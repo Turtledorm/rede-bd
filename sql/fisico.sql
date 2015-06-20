@@ -35,8 +35,8 @@ CREATE TABLE sala (
 #--------------------------------------------------------------
 
 CREATE TABLE impressora (
-    ip CHAR(20) PRIMARY KEY,
-    nome CHAR(20),
+    nome CHAR(20) PRIMARY KEY,
+    ip CHAR(20),
     marca CHAR(15),
     modelo CHAR(15),
     driver CHAR(10),
@@ -46,9 +46,9 @@ CREATE TABLE impressora (
 #--------------------------------------------------------------
 
 CREATE TABLE maquina (
-    ip CHAR(20) PRIMARY KEY,
+    hostname CHAR(20) PRIMARY KEY,
+    ip CHAR(20),
     macAddress CHAR(20),
-    hostname CHAR(20),
     tipo CHAR(10),
     salaID INT,
     FOREIGN KEY(salaID) REFERENCES sala (salaID)
@@ -120,12 +120,12 @@ CREATE TABLE enviado_para (
 # Definição das chaves estrangeiras
 #--------------------------------------------------------------
 
-ALTER TABLE imprime_em   ADD FOREIGN KEY(impressora)   REFERENCES impressora (ip);
+ALTER TABLE imprime_em   ADD FOREIGN KEY(impressora)   REFERENCES impressora (nome);
 ALTER TABLE imprime_em   ADD FOREIGN KEY(usuario)      REFERENCES usuario    (username);
 ALTER TABLE impressora   ADD FOREIGN KEY(salaID)       REFERENCES sala       (salaID);
 ALTER TABLE enviado_para ADD FOREIGN KEY(idEmail)      REFERENCES email      (id);
 ALTER TABLE enviado_para ADD FOREIGN KEY(destinatario) REFERENCES usuario    (username);
-ALTER TABLE acessa       ADD FOREIGN KEY(maquina)      REFERENCES maquina    (ip);
+ALTER TABLE acessa       ADD FOREIGN KEY(maquina)      REFERENCES maquina    (hostname);
 
 #--------------------------------------------------------------
 # Inserção de tuplas
@@ -164,120 +164,120 @@ INSERT INTO sala VALUES (4, "Pesquisa Restrita", "Sala 321-A");
 
 #--------------------------------------------------------------
 
-INSERT INTO impressora VALUES ("191.142.88.00", "colossus", "HP", "LaserJet Pro MFP M125a", "CQue 2.0.8 Linux Driver DEB 64-bit", 2);
-INSERT INTO impressora VALUES ("191.142.88.01", "eniac", "Dell", "1355cnw Multifunction Color Printer", "JRE 64-bit", 2);
-INSERT INTO impressora VALUES ("191.142.88.02", "univac", "Epson", "WorkForce WF-3640", "CQue 2.0.8 Linux Driver DEB 64-bit", 4);
+INSERT INTO impressora VALUES ("colossus", "191.142.88.00", "HP", "LaserJet Pro MFP M125a", "CQue 2.0.8 Linux Driver DEB 64-bit", 2);
+INSERT INTO impressora VALUES ("eniac", "191.142.88.01", "Dell", "1355cnw Multifunction Color Printer", "JRE 64-bit", 2);
+INSERT INTO impressora VALUES ("univac", "191.142.88.02", "Epson", "WorkForce WF-3640", "CQue 2.0.8 Linux Driver DEB 64-bit", 4);
 
 #--------------------------------------------------------------
 
-INSERT INTO maquina VALUES ("202.153.44.00", "00:16:E9:74:1D:27", "alpha", "Cliente", 2);
-INSERT INTO maquina VALUES ("202.153.44.01", "FD:FE:5D:46:B3:1B", "beta", "Cliente", 2);
-INSERT INTO maquina VALUES ("202.153.44.02", "D6:78:81:5A:FC:84", "gama", "Cliente", 2);
-INSERT INTO maquina VALUES ("202.153.44.03", "85:A8:30:02:62:5D", "sigma", "Servidor", 2);
-INSERT INTO maquina VALUES ("202.153.44.04", "65:BE:CB:1D:34:2F", "omega", "Servidor", 2);
+INSERT INTO maquina VALUES ("alpha", "202.153.44.00", "00:16:E9:74:1D:27", "Cliente", 2);
+INSERT INTO maquina VALUES ("beta", "202.153.44.01", "FD:FE:5D:46:B3:1B", "Cliente", 2);
+INSERT INTO maquina VALUES ("gama", "202.153.44.02", "D6:78:81:5A:FC:84", "Cliente", 2);
+INSERT INTO maquina VALUES ("sigma", "202.153.44.03", "85:A8:30:02:62:5D", "Servidor", 2);
+INSERT INTO maquina VALUES ("omega", "202.153.44.04", "65:BE:CB:1D:34:2F", "Servidor", 2);
 
-INSERT INTO maquina VALUES ("202.153.44.10", "70:93:81:F7:C6:49", "ryu", "Cliente", 2);
-INSERT INTO maquina VALUES ("202.153.44.11", "3C:82:4B:C7:DE:C4", "ken", "Cliente", 2);
-INSERT INTO maquina VALUES ("202.153.44.12", "32:D2:F6:3C:FF:FF", "guile", "Cliente", 2);
-INSERT INTO maquina VALUES ("202.153.44.13", "20:2F:5D:8B:F1:38", "chunli", "Cliente", 2);
-INSERT INTO maquina VALUES ("202.153.44.14", "67:99:8B:3C:28:24", "honda", "Cliente", 2);
-INSERT INTO maquina VALUES ("202.153.44.15", "38:4E:59:56:43:F1", "dhalsim", "Cliente", 2);
-INSERT INTO maquina VALUES ("202.153.44.16", "D8:3C:5C:4C:FE:AA", "sagat", "Cliente", 2);
-INSERT INTO maquina VALUES ("202.153.44.17", "18:EC:FC:90:49:85", "vega", "Cliente", 2);
+INSERT INTO maquina VALUES ("ryu", "202.153.44.10", "70:93:81:F7:C6:49", "Cliente", 2);
+INSERT INTO maquina VALUES ("ken", "202.153.44.11", "3C:82:4B:C7:DE:C4", "Cliente", 2);
+INSERT INTO maquina VALUES ("guile", "202.153.44.12", "32:D2:F6:3C:FF:FF", "Cliente", 2);
+INSERT INTO maquina VALUES ("chunli", "202.153.44.13", "20:2F:5D:8B:F1:38", "Cliente", 2);
+INSERT INTO maquina VALUES ("honda", "202.153.44.14", "67:99:8B:3C:28:24", "Cliente", 2);
+INSERT INTO maquina VALUES ("dhalsim", "202.153.44.15", "38:4E:59:56:43:F1", "Cliente", 2);
+INSERT INTO maquina VALUES ("sagat", "202.153.44.16", "D8:3C:5C:4C:FE:AA", "Cliente", 2);
+INSERT INTO maquina VALUES ("vega", "202.153.44.17", "18:EC:FC:90:49:85", "Cliente", 2);
 
-INSERT INTO maquina VALUES ("202.153.44.20", "48:BF:A2:B4:EC:95", "luke", "Cliente", 3);
-INSERT INTO maquina VALUES ("202.153.44.21", "86:7C:7E:C2:FD:E4", "obiwan", "Cliente", 3);
-INSERT INTO maquina VALUES ("202.153.44.22", "2D:1A:99:01:01:B4", "yoda", "Cliente", 3);
-INSERT INTO maquina VALUES ("202.153.44.23", "31:24:19:65:5A:8E", "vader", "Cliente", 3);
+INSERT INTO maquina VALUES ("luke", "202.153.44.20", "48:BF:A2:B4:EC:95", "Cliente", 3);
+INSERT INTO maquina VALUES ("obiwan", "202.153.44.21", "86:7C:7E:C2:FD:E4", "Cliente", 3);
+INSERT INTO maquina VALUES ("yoda", "202.153.44.22", "2D:1A:99:01:01:B4", "Cliente", 3);
+INSERT INTO maquina VALUES ("vader", "202.153.44.23", "31:24:19:65:5A:8E", "Cliente", 3);
 
-INSERT INTO maquina VALUES ("202.153.44.30", "85:66:6E:B8:59:B9", "ignis", "Cliente", 4);
-INSERT INTO maquina VALUES ("202.153.44.31", "8C:7E:45:23:6F:0B", "flumen", "Cliente", 4);
-INSERT INTO maquina VALUES ("202.153.44.32", "7E:89:94:77:5B:DE", "terra", "Cliente", 4);
-INSERT INTO maquina VALUES ("202.153.44.33", "2E:64:4A:89:74:1D", "ventus", "Cliente", 4);
-INSERT INTO maquina VALUES ("202.153.44.34", "1A:AF:09:51:E6:41", "lychnus", "Cliente", 4);
-INSERT INTO maquina VALUES ("202.153.44.35", "72:39:02:21:1D:5C", "umbra", "Cliente", 4);
+INSERT INTO maquina VALUES ("ignis", "202.153.44.30", "85:66:6E:B8:59:B9", "Cliente", 4);
+INSERT INTO maquina VALUES ("flumen", "202.153.44.31", "8C:7E:45:23:6F:0B", "Cliente", 4);
+INSERT INTO maquina VALUES ("terra", "202.153.44.32", "7E:89:94:77:5B:DE", "Cliente", 4);
+INSERT INTO maquina VALUES ("ventus", "202.153.44.33", "2E:64:4A:89:74:1D", "Cliente", 4);
+INSERT INTO maquina VALUES ("lychnus", "202.153.44.34", "1A:AF:09:51:E6:41", "Cliente", 4);
+INSERT INTO maquina VALUES ("umbra", "202.153.44.35", "72:39:02:21:1D:5C", "Cliente", 4);
 
 #--------------------------------------------------------------
 
-INSERT INTO usuario VALUES ("gaspar", 5006007, "batata", "Gaspar", "S", "Zinho", "BCC", "2013:04:05", 30000, 64, FALSE, FALSE);
+INSERT INTO usuario VALUES ("gaspar", 5006007, "batata", "Gaspar", "S", "Zinho", "Comp", "2013:04:05", 30000, 64, FALSE, FALSE);
 INSERT INTO usuario VALUES ("fulano", 1234567, "pclegal", "Fulano", "S", "Júnior", "Pura", "2015:02:20", 10000, 10, FALSE, TRUE);
-INSERT INTO usuario VALUES ("cicrano", 7654321, "pagodebom", "Cicrano", "D", "Cicro", "BCC", "2015:03:26", 45000, 42, FALSE, FALSE);
+INSERT INTO usuario VALUES ("cicrano", 7654321, "pagodebom", "Cicrano", "D", "Cicro", "Comp", "2015:03:26", 45000, 42, FALSE, FALSE);
 INSERT INTO usuario VALUES ("tiopatinhas", 4565656, "dinheiro", "Patinhas", "M", "Patinhas", "Estat", "2002:10:16", 500, 2, TRUE, FALSE);
 INSERT INTO usuario VALUES ("monstro", 3213210, "podevim", "Leo", "S", "Stronda", "Lic", "2010:07:01", 22000, 30, FALSE, TRUE);
 INSERT INTO usuario VALUES ("cirno", 9999999, "baka", "Cirno", "I", "Fairy", "Pura", "2009:09:09", 9999, 9, FALSE, FALSE);
 INSERT INTO usuario VALUES ("mugiwara", 5432121, "niku", "Monkey", "D", "Luffy", "Aplic", "2000:05:02", 40000, 10, FALSE, FALSE);
-INSERT INTO usuario VALUES ("nappa", 8000000, "vegeta", "Grande", "F", "Nappa", "BCC", "2004:08:08", 8000, 80, FALSE, FALSE);
+INSERT INTO usuario VALUES ("nappa", 8000000, "vegeta", "Grande", "F", "Nappa", "Comp", "2004:08:08", 8000, 80, FALSE, FALSE);
 INSERT INTO usuario VALUES ("cnorris", 1000001, "rhkick", "Chuck", "R", "Norris", "Aplic", "1998:01:01", 4000, 50, TRUE, FALSE);
 INSERT INTO usuario VALUES ("newton", 5432345, "fisicaS2", "Isaac", "P", "Newton", "Pura", "2006:06:04", 21000, 42, FALSE, FALSE);
 INSERT INTO usuario VALUES ("mario", 8521474, "cogumelo", "Super", "K", "Mario", "Lic", "1999:11:26", 37001, 15, FALSE, FALSE);
 INSERT INTO usuario VALUES ("ssnape", 3213210, "sonserina", "Severus", "S", "Snape", "Estat", "2003:09:14", 12500, 38, FALSE, FALSE);
-INSERT INTO usuario VALUES ("gandalf", 4040404, "donotpass", "Gandalf", "T", "Grey", "BCC", "2007:05:02", 14000, 70, TRUE, FALSE);
+INSERT INTO usuario VALUES ("gandalf", 4040404, "donotpass", "Gandalf", "T", "Grey", "Comp", "2007:05:02", 14000, 70, TRUE, FALSE);
 
 #--------------------------------------------------------------
 
-INSERT INTO imprime_em VALUES ("191.142.88.01", "2015:06:01", "13:20", "cirno", 0.5, "Lista Cálculo II", 2);
+INSERT INTO imprime_em VALUES ("eniac", "2015:06:01", "13:20", "cirno", 0.5, "Lista Cálculo II", 2);
 
-INSERT INTO imprime_em VALUES ("191.142.88.02", "2015:06:02", "17:01", "monstro", 20, "Academia 101", 10);
-INSERT INTO imprime_em VALUES ("191.142.88.01", "2015:06:02", "17:32", "gandalf", 10, "Resumo Anéis", 6);
-INSERT INTO imprime_em VALUES ("191.142.88.00", "2015:06:02", "21:00", "monstro", 30, "Monster Chef", 8);
-INSERT INTO imprime_em VALUES ("191.142.88.02", "2015:06:02", "21:42", "newton", 70, "Leis de Newton", 30);
+INSERT INTO imprime_em VALUES ("univac", "2015:06:02", "17:01", "monstro", 20, "Academia 101", 10);
+INSERT INTO imprime_em VALUES ("eniac", "2015:06:02", "17:32", "gandalf", 10, "Resumo Anéis", 6);
+INSERT INTO imprime_em VALUES ("colossus", "2015:06:02", "21:00", "monstro", 30, "Monster Chef", 8);
+INSERT INTO imprime_em VALUES ("univac", "2015:06:02", "21:42", "newton", 70, "Leis de Newton", 30);
 
-INSERT INTO imprime_em VALUES ("191.142.88.02", "2015:06:03", "7:07", "nappa", 4, "Lidando com Fracasso", 5);
-INSERT INTO imprime_em VALUES ("191.142.88.02", "2015:06:03", "9:45", "cnorris", 1, "Chuck Norris Facts", 2);
-INSERT INTO imprime_em VALUES ("191.142.88.01", "2015:06:03", "17:12", "monstro", 20, "Way of the Whey", 12);
-INSERT INTO imprime_em VALUES ("191.142.88.00", "2015:06:03", "17:13", "mario", 0.7, "Princesa Raptada", 1);
-INSERT INTO imprime_em VALUES ("191.142.88.01", "2015:06:03", "19:10", "mugiwara", 12, "One Piece 543", 7);
+INSERT INTO imprime_em VALUES ("univac", "2015:06:03", "7:07", "nappa", 4, "Lidando com Fracasso", 5);
+INSERT INTO imprime_em VALUES ("univac", "2015:06:03", "9:45", "cnorris", 1, "Chuck Norris Facts", 2);
+INSERT INTO imprime_em VALUES ("eniac", "2015:06:03", "17:12", "monstro", 20, "Way of the Whey", 12);
+INSERT INTO imprime_em VALUES ("colossus", "2015:06:03", "17:13", "mario", 0.7, "Princesa Raptada", 1);
+INSERT INTO imprime_em VALUES ("eniac", "2015:06:03", "19:10", "mugiwara", 12, "One Piece 543", 7);
 
-INSERT INTO imprime_em VALUES ("191.142.88.01", "2015:06:04", "8:00", "ssnape", 3, "Aula de Poções", 4);
-INSERT INTO imprime_em VALUES ("191.142.88.00", "2015:06:04", "8:58", "nappa", 36, "8000 fórmulas", 20);
-INSERT INTO imprime_em VALUES ("191.142.88.02", "2015:06:04", "9:33", "fulano", 0.2, "Alguma folha", 1);
-INSERT INTO imprime_em VALUES ("191.142.88.00", "2015:06:04", "10:01", "cicrano", 1.3, "Papéis legais", 3);
-INSERT INTO imprime_em VALUES ("191.142.88.00", "2015:06:04", "10:35", "gaspar", 4, "Assombrando Legal", 3);
+INSERT INTO imprime_em VALUES ("eniac", "2015:06:04", "8:00", "ssnape", 3, "Aula de Poções", 4);
+INSERT INTO imprime_em VALUES ("colossus", "2015:06:04", "8:58", "nappa", 36, "8000 fórmulas", 20);
+INSERT INTO imprime_em VALUES ("univac", "2015:06:04", "9:33", "fulano", 0.2, "Alguma folha", 1);
+INSERT INTO imprime_em VALUES ("colossus", "2015:06:04", "10:01", "cicrano", 1.3, "Papéis legais", 3);
+INSERT INTO imprime_em VALUES ("colossus", "2015:06:04", "10:35", "gaspar", 4, "Assombrando Legal", 3);
 
-INSERT INTO imprime_em VALUES ("191.142.88.02", "2015:06:05", "11:20", "mario", 14, "Irmão Verde", 10);
-INSERT INTO imprime_em VALUES ("191.142.88.01", "2015:06:05", "12:01", "ssnape", 12, "Piadas da Grifinória", 5);
+INSERT INTO imprime_em VALUES ("univac", "2015:06:05", "11:20", "mario", 14, "Irmão Verde", 10);
+INSERT INTO imprime_em VALUES ("eniac", "2015:06:05", "12:01", "ssnape", 12, "Piadas da Grifinória", 5);
 
 #--------------------------------------------------------------
 
-INSERT INTO acessa VALUES ("cirno", "202.153.44.22", "2015:06:01", "13:05", "Físico");
+INSERT INTO acessa VALUES ("cirno", "yoda", "2015:06:01", "13:05", "Físico");
 
-INSERT INTO acessa VALUES ("monstro", "202.153.44.10", "2015:06:02", "16:52", "Físico");
-INSERT INTO acessa VALUES ("gandalf", "202.153.44.00", "2015:06:02", "17:00", "Físico");
-INSERT INTO acessa VALUES ("tiopatinhas", "202.153.44.01", "2015:06:02", "17:04", "SSH");
-INSERT INTO acessa VALUES ("monstro", "202.153.44.12", "2015:06:02", "21:38", "Físico");
-INSERT INTO acessa VALUES ("newton", "202.153.44.31", "2015:06:02", "21:30", "Físico");
-INSERT INTO acessa VALUES ("mario", "202.153.44.21", "2015:06:02", "21:34", "Físico");
+INSERT INTO acessa VALUES ("monstro", "ryu", "2015:06:02", "16:52", "Físico");
+INSERT INTO acessa VALUES ("gandalf", "alpha", "2015:06:02", "17:00", "Físico");
+INSERT INTO acessa VALUES ("tiopatinhas", "beta", "2015:06:02", "17:04", "SSH");
+INSERT INTO acessa VALUES ("monstro", "guile", "2015:06:02", "21:38", "Físico");
+INSERT INTO acessa VALUES ("newton", "flumen", "2015:06:02", "21:30", "Físico");
+INSERT INTO acessa VALUES ("mario", "obiwan", "2015:06:02", "21:34", "Físico");
 
-INSERT INTO acessa VALUES ("cirno", "202.153.44.16", "2015:06:03", "6:40", "Físico");
-INSERT INTO acessa VALUES ("fulano", "202.153.44.20", "2015:06:03", "6:52", "Físico");
-INSERT INTO acessa VALUES ("gandalf", "202.153.44.01", "2015:06:03", "7:00", "SSH");
-INSERT INTO acessa VALUES ("nappa", "202.153.44.30", "2015:06:03", "7:03", "Físico");
-INSERT INTO acessa VALUES ("cicrano", "202.153.44.23", "2015:06:03", "8:15", "Físico");
-INSERT INTO acessa VALUES ("cicrano", "202.153.44.11", "2015:06:03", "8:31", "SSH");
-INSERT INTO acessa VALUES ("cnorris", "202.153.44.02", "2015:06:03", "9:10", "Físico");
-INSERT INTO acessa VALUES ("tiopatinhas", "202.153.44.00", "2015:06:03", "12:09", "Físico");
-INSERT INTO acessa VALUES ("mario", "202.153.44.34", "2015:06:03", "16:49", "Físico");
-INSERT INTO acessa VALUES ("monstro", "202.153.44.17", "2015:06:03", "17:00", "Físico");
-INSERT INTO acessa VALUES ("ssnape", "202.153.44.35", "2015:06:03", "17:20", "Físico");
-INSERT INTO acessa VALUES ("monstro", "202.153.44.10", "2015:06:03", "17:33", "SSH");
-INSERT INTO acessa VALUES ("mugiwara", "202.153.44.12", "2015:06:03", "18:42", "Físico");
-INSERT INTO acessa VALUES ("gaspar", "202.153.44.32", "2015:06:03", "21:00", "Físico");
+INSERT INTO acessa VALUES ("cirno", "sagat", "2015:06:03", "6:40", "Físico");
+INSERT INTO acessa VALUES ("fulano", "luke", "2015:06:03", "6:52", "Físico");
+INSERT INTO acessa VALUES ("gandalf", "beta", "2015:06:03", "7:00", "SSH");
+INSERT INTO acessa VALUES ("nappa", "ignis", "2015:06:03", "7:03", "Físico");
+INSERT INTO acessa VALUES ("cicrano", "vader", "2015:06:03", "8:15", "Físico");
+INSERT INTO acessa VALUES ("cicrano", "ken", "2015:06:03", "8:31", "SSH");
+INSERT INTO acessa VALUES ("cnorris", "gama", "2015:06:03", "9:10", "Físico");
+INSERT INTO acessa VALUES ("tiopatinhas", "alpha", "2015:06:03", "12:09", "Físico");
+INSERT INTO acessa VALUES ("mario", "lychnus", "2015:06:03", "16:49", "Físico");
+INSERT INTO acessa VALUES ("monstro", "vega", "2015:06:03", "17:00", "Físico");
+INSERT INTO acessa VALUES ("ssnape", "umbra", "2015:06:03", "17:20", "Físico");
+INSERT INTO acessa VALUES ("monstro", "ryu", "2015:06:03", "17:33", "SSH");
+INSERT INTO acessa VALUES ("mugiwara", "guile", "2015:06:03", "18:42", "Físico");
+INSERT INTO acessa VALUES ("gaspar", "terra", "2015:06:03", "21:00", "Físico");
 
-INSERT INTO acessa VALUES ("ssnape", "202.153.44.30", "2015:06:04", "7:40", "Físico");
-INSERT INTO acessa VALUES ("tiopatinhas", "202.153.44.00", "2015:06:04", "8:00", "SSH");
-INSERT INTO acessa VALUES ("nappa", "202.153.44.13", "2015:06:04", "8:10", "Físico");
-INSERT INTO acessa VALUES ("mario", "202.153.44.33", "2015:06:04", "8:22", "Físico");
-INSERT INTO acessa VALUES ("fulano", "202.153.44.20", "2015:06:04", "9:20", "Físico");
-INSERT INTO acessa VALUES ("cicrano", "202.153.44.21", "2015:06:04", "9:21", "Físico");
-INSERT INTO acessa VALUES ("monstro", "202.153.44.16", "2015:06:04", "10:00", "Físico");
-INSERT INTO acessa VALUES ("gaspar", "202.153.44.35", "2015:06:04", "10:29", "Físico");
-INSERT INTO acessa VALUES ("cnorris", "202.153.44.01", "2015:06:04", "10:42", "SSH");
-INSERT INTO acessa VALUES ("ssnape", "202.153.44.23", "2015:06:04", "14:41", "Físico");
-INSERT INTO acessa VALUES ("gandalf", "202.153.44.00", "2015:06:04", "17:13", "Físico");
+INSERT INTO acessa VALUES ("ssnape", "ignis", "2015:06:04", "7:40", "Físico");
+INSERT INTO acessa VALUES ("tiopatinhas", "alpha", "2015:06:04", "8:00", "SSH");
+INSERT INTO acessa VALUES ("nappa", "chunli", "2015:06:04", "8:10", "Físico");
+INSERT INTO acessa VALUES ("mario", "ventus", "2015:06:04", "8:22", "Físico");
+INSERT INTO acessa VALUES ("fulano", "luke", "2015:06:04", "9:20", "Físico");
+INSERT INTO acessa VALUES ("cicrano", "obiwan", "2015:06:04", "9:21", "Físico");
+INSERT INTO acessa VALUES ("monstro", "sagat", "2015:06:04", "10:00", "Físico");
+INSERT INTO acessa VALUES ("gaspar", "umbra", "2015:06:04", "10:29", "Físico");
+INSERT INTO acessa VALUES ("cnorris", "beta", "2015:06:04", "10:42", "SSH");
+INSERT INTO acessa VALUES ("ssnape", "vader", "2015:06:04", "14:41", "Físico");
+INSERT INTO acessa VALUES ("gandalf", "alpha", "2015:06:04", "17:13", "Físico");
 
-INSERT INTO acessa VALUES ("mario", "202.153.44.15", "2015:06:05", "11:00", "Físico");
-INSERT INTO acessa VALUES ("ssnape", "202.153.44.34", "2015:06:05", "12:32", "Físico");
-INSERT INTO acessa VALUES ("tiopatinhas", "202.153.44.02", "2015:06:05", "13:00", "SSH");
+INSERT INTO acessa VALUES ("mario", "dhalsim", "2015:06:05", "11:00", "Físico");
+INSERT INTO acessa VALUES ("ssnape", "lychnus", "2015:06:05", "12:32", "Físico");
+INSERT INTO acessa VALUES ("tiopatinhas", "gama", "2015:06:05", "13:00", "SSH");
 
 #--------------------------------------------------------------
 

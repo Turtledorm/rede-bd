@@ -6,13 +6,34 @@ Integrantes:
     - (8536065) Leonardo Pereira Macedo
     - (8536221) Vinícius Bitencourt Matos
 
++-----------------+
+|   VISÂO GERAL   |
++-----------------+
+
+Citaremos aqui um resumo geral dos arquivos presentes neste trabalho.
+
+brModelo/
+=========
+
+  - **conceitual.brM**: Contém o projeto conceitual do BD.
+
+  - **logico.brM**: Contém o projeto lógico do BD.
+
+sql/
+====
+
+  - **fisico.sql**: Contém o projeto físico. Inclui a criação do BD, das tabelas e 
+                    a inserção de tuplas.
+
+  - **consulta.sql**: Contém exemplos de consultas para serem usadas no projeto físico.
+
 +-------------------------------+
 |     DESCRIÇÃO DO DOMÍNIO      |
 | Projeto: Rede de Computadores |
 +-------------------------------+
 
 Inspirados na Rede Linux do IME-USP, buscamos criar um Banco de Dados para uma
-rede de computadores. São contidas informações a respeito dos usuários, máquinas
+rede de computadores. São contidas informações a respeito dos usuários, salas, máquinas
 e impressoras, bem como lista de pacotes (programas) instalados. Para cada usuário,
 são guardados seus atributos de identificação, quotas, bem como listas de emails
 enviados e recebidos. Máquina consta com suas especificações e um histórico de
