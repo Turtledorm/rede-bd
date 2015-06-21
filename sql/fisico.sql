@@ -21,7 +21,8 @@ CREATE TABLE depende_de (
     nomePacote CHAR(30),
     nomeDep CHAR(30),
     PRIMARY KEY(nomePacote, nomeDep),
-    FOREIGN KEY(nomePacote) REFERENCES pacote (nome)
+    FOREIGN KEY(nomePacote) REFERENCES pacote (nome),
+    FOREIGN KEY(nomeDep)    REFERENCES pacote (nome)
 );
 
 #--------------------------------------------------------------
@@ -40,7 +41,8 @@ CREATE TABLE impressora (
     marca CHAR(15),
     modelo CHAR(15),
     driver CHAR(10),
-    salaID INT
+    salaID INT,
+    FOREIGN KEY(salaID) REFERENCES sala (salaID)
 );
 
 #--------------------------------------------------------------
@@ -81,7 +83,9 @@ CREATE TABLE imprime_em (
     tamanhoArq INT,
     tituloArq CHAR(20),
     numFolhas INT,
-    PRIMARY KEY(impressora, data, hora)
+    PRIMARY KEY(impressora, data, hora),
+    FOREIGN KEY(impressora) REFERENCES impressora (nome),
+    FOREIGN KEY(usuario)    REFERENCES usuario    (username)
 );
 
 #--------------------------------------------------------------
@@ -93,7 +97,8 @@ CREATE TABLE acessa (
     hora TIME,
     meio CHAR(10),
     PRIMARY KEY(usuario, maquina, data, hora),
-    FOREIGN KEY(usuario) REFERENCES usuario (username)
+    FOREIGN KEY(usuario) REFERENCES usuario (username),
+    FOREIGN KEY(maquina) REFERENCES maquina (hostname)
 );
 
 #--------------------------------------------------------------
@@ -113,19 +118,10 @@ CREATE TABLE enviado_para (
     idEmail INT,
     destinatario CHAR(20),
     tipo CHAR(10),
-    PRIMARY KEY(idEmail, destinatario)
+    PRIMARY KEY(idEmail, destinatario),
+    FOREIGN KEY(idEmail)      REFERENCES email   (id),
+    FOREIGN KEY(destinatario) REFERENCES usuario (username)
 );
-
-#--------------------------------------------------------------
-# Definição das chaves estrangeiras
-#--------------------------------------------------------------
-
-ALTER TABLE imprime_em   ADD FOREIGN KEY(impressora)   REFERENCES impressora (nome);
-ALTER TABLE imprime_em   ADD FOREIGN KEY(usuario)      REFERENCES usuario    (username);
-ALTER TABLE impressora   ADD FOREIGN KEY(salaID)       REFERENCES sala       (salaID);
-ALTER TABLE enviado_para ADD FOREIGN KEY(idEmail)      REFERENCES email      (id);
-ALTER TABLE enviado_para ADD FOREIGN KEY(destinatario) REFERENCES usuario    (username);
-ALTER TABLE acessa       ADD FOREIGN KEY(maquina)      REFERENCES maquina    (hostname);
 
 #--------------------------------------------------------------
 # Inserção de tuplas

@@ -5,9 +5,9 @@
 #--------------------------------------------------------------
 # EXEMPLO 1
 #
-# Buscar os usernames, primeiros nomes e sobrenomes dos
-# usuários não suspensos que imprimiram pelo menos uma vez em
-# cada impressora.
+# Buscar username, primeiro nome e sobrenome dos usuários
+# não suspensos que imprimiram pelo menos uma vez em
+# todas as impressoras.
 #--------------------------------------------------------------
 
 SELECT username, pNome, sNome
@@ -34,6 +34,11 @@ WHERE u.suspenso = FALSE AND NOT EXISTS (
 #--------------------------------------------------------------
 # EXEMPLO 3
 #
-# Buscar pacotes que simultaneamente dependam e sejam
-# dependência de outros pacotes.
+# Buscar nome e versão dos pacotes que sejam simultaneamente
+# dependentes e dependência de outros pacotes.
 #--------------------------------------------------------------
+
+SELECT nome
+FROM pacotes AS p and depende_de AS d
+WHERE p.nome = d.nome AND 
+
