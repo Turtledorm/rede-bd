@@ -151,6 +151,7 @@ INSERT INTO pacote VALUES ("chromium", "40.4");
 
 INSERT INTO depende_de VALUES ("valgrind", "gcc");
 INSERT INTO depende_de VALUES ("wine", "gcc");
+INSERT INTO depende_de VALUES ("wine", "valgrind");
 INSERT INTO depende_de VALUES ("wine", "xlib");
 INSERT INTO depende_de VALUES ("logisim", "java");
 INSERT INTO depende_de VALUES ("blender", "python");
@@ -170,11 +171,11 @@ INSERT INTO impressora VALUES ("univac", "191.142.88.02", "Epson", "WorkForce WF
 
 #--------------------------------------------------------------
 
-INSERT INTO maquina VALUES ("alpha", "202.153.44.00", "00:16:E9:74:1D:27", "Cliente", 2);
-INSERT INTO maquina VALUES ("beta", "202.153.44.01", "FD:FE:5D:46:B3:1B", "Cliente", 2);
-INSERT INTO maquina VALUES ("gama", "202.153.44.02", "D6:78:81:5A:FC:84", "Cliente", 2);
-INSERT INTO maquina VALUES ("sigma", "202.153.44.03", "85:A8:30:02:62:5D", "Servidor", 2);
-INSERT INTO maquina VALUES ("omega", "202.153.44.04", "65:BE:CB:1D:34:2F", "Servidor", 2);
+INSERT INTO maquina VALUES ("alpha", "202.153.44.00", "00:16:E9:74:1D:27", "Cliente", 1);
+INSERT INTO maquina VALUES ("beta", "202.153.44.01", "FD:FE:5D:46:B3:1B", "Cliente", 1);
+INSERT INTO maquina VALUES ("gama", "202.153.44.02", "D6:78:81:5A:FC:84", "Cliente", 1);
+INSERT INTO maquina VALUES ("sigma", "202.153.44.03", "85:A8:30:02:62:5D", "Servidor", 1);
+INSERT INTO maquina VALUES ("omega", "202.153.44.04", "65:BE:CB:1D:34:2F", "Servidor", 1);
 
 INSERT INTO maquina VALUES ("ryu", "202.153.44.10", "70:93:81:F7:C6:49", "Cliente", 2);
 INSERT INTO maquina VALUES ("ken", "202.153.44.11", "3C:82:4B:C7:DE:C4", "Cliente", 2);
@@ -201,12 +202,12 @@ INSERT INTO maquina VALUES ("umbra", "202.153.44.35", "72:39:02:21:1D:5C", "Clie
 
 INSERT INTO usuario VALUES ("gaspar", 5006007, "batata", "Gaspar", "S", "Zinho", "Comp", "2013:04:05", 30000, 64, FALSE, FALSE);
 INSERT INTO usuario VALUES ("fulano", 1234567, "pclegal", "Fulano", "S", "Júnior", "Pura", "2015:02:20", 10000, 10, FALSE, TRUE);
-INSERT INTO usuario VALUES ("cicrano", 7654321, "pagodebom", "Cicrano", "D", "Cicro", "Comp", "2015:03:26", 45000, 42, FALSE, FALSE);
+INSERT INTO usuario VALUES ("sicrano", 7654321, "pagodebom", "Sicrano", "D", "Sicro", "Comp", "2015:03:26", 45000, 42, FALSE, FALSE);
 INSERT INTO usuario VALUES ("tiopatinhas", 4565656, "dinheiro", "Patinhas", "M", "Patinhas", "Estat", "2002:10:16", 500, 2, TRUE, FALSE);
-INSERT INTO usuario VALUES ("monstro", 3213210, "podevim", "Leo", "S", "Stronda", "Lic", "2010:07:01", 22000, 30, FALSE, TRUE);
+INSERT INTO usuario VALUES ("monstro", 3213210, "podevim", "Leo", "S", "Stronda", "Lic", "2010:07:01", 22000, 30, FALSE, FALSE);
 INSERT INTO usuario VALUES ("cirno", 9999999, "baka", "Cirno", "I", "Fairy", "Pura", "2009:09:09", 9999, 9, FALSE, FALSE);
 INSERT INTO usuario VALUES ("mugiwara", 5432121, "niku", "Monkey", "D", "Luffy", "Aplic", "2000:05:02", 40000, 10, FALSE, FALSE);
-INSERT INTO usuario VALUES ("nappa", 8000000, "vegeta", "Grande", "F", "Nappa", "Comp", "2004:08:08", 8000, 80, FALSE, FALSE);
+INSERT INTO usuario VALUES ("nappa", 8000000, "vegeta", "Grande", "F", "Nappa", "Comp", "2004:08:08", 8000, 80, FALSE, TRUE);
 INSERT INTO usuario VALUES ("cnorris", 1000001, "rhkick", "Chuck", "R", "Norris", "Aplic", "1998:01:01", 4000, 50, TRUE, FALSE);
 INSERT INTO usuario VALUES ("newton", 5432345, "fisicaS2", "Isaac", "P", "Newton", "Pura", "2006:06:04", 21000, 42, FALSE, FALSE);
 INSERT INTO usuario VALUES ("mario", 8521474, "cogumelo", "Super", "K", "Mario", "Lic", "1999:11:26", 37001, 15, FALSE, FALSE);
@@ -230,8 +231,9 @@ INSERT INTO imprime_em VALUES ("eniac", "2015:06:03", "19:10", "mugiwara", 12, "
 
 INSERT INTO imprime_em VALUES ("eniac", "2015:06:04", "8:00", "ssnape", 3, "Aula de Poções", 4);
 INSERT INTO imprime_em VALUES ("colossus", "2015:06:04", "8:58", "nappa", 36, "8000 fórmulas", 20);
+INSERT INTO imprime_em VALUES ("eniac", "2015:06:04", "9:06", "nappa", 50, "Dragon Ball Z 004", 18);
 INSERT INTO imprime_em VALUES ("univac", "2015:06:04", "9:33", "fulano", 0.2, "Alguma folha", 1);
-INSERT INTO imprime_em VALUES ("colossus", "2015:06:04", "10:01", "cicrano", 1.3, "Papéis legais", 3);
+INSERT INTO imprime_em VALUES ("colossus", "2015:06:04", "10:01", "sicrano", 1.3, "Papéis legais", 3);
 INSERT INTO imprime_em VALUES ("colossus", "2015:06:04", "10:35", "gaspar", 4, "Assombrando Legal", 3);
 
 INSERT INTO imprime_em VALUES ("univac", "2015:06:05", "11:20", "mario", 14, "Irmão Verde", 10);
@@ -252,8 +254,8 @@ INSERT INTO acessa VALUES ("cirno", "sagat", "2015:06:03", "6:40", "Físico");
 INSERT INTO acessa VALUES ("fulano", "luke", "2015:06:03", "6:52", "Físico");
 INSERT INTO acessa VALUES ("gandalf", "beta", "2015:06:03", "7:00", "SSH");
 INSERT INTO acessa VALUES ("nappa", "ignis", "2015:06:03", "7:03", "Físico");
-INSERT INTO acessa VALUES ("cicrano", "vader", "2015:06:03", "8:15", "Físico");
-INSERT INTO acessa VALUES ("cicrano", "ken", "2015:06:03", "8:31", "SSH");
+INSERT INTO acessa VALUES ("sicrano", "vader", "2015:06:03", "8:15", "Físico");
+INSERT INTO acessa VALUES ("sicrano", "ken", "2015:06:03", "8:31", "SSH");
 INSERT INTO acessa VALUES ("cnorris", "gama", "2015:06:03", "9:10", "Físico");
 INSERT INTO acessa VALUES ("tiopatinhas", "alpha", "2015:06:03", "12:09", "Físico");
 INSERT INTO acessa VALUES ("mario", "lychnus", "2015:06:03", "16:49", "Físico");
@@ -268,7 +270,7 @@ INSERT INTO acessa VALUES ("tiopatinhas", "alpha", "2015:06:04", "8:00", "SSH");
 INSERT INTO acessa VALUES ("nappa", "chunli", "2015:06:04", "8:10", "Físico");
 INSERT INTO acessa VALUES ("mario", "ventus", "2015:06:04", "8:22", "Físico");
 INSERT INTO acessa VALUES ("fulano", "luke", "2015:06:04", "9:20", "Físico");
-INSERT INTO acessa VALUES ("cicrano", "obiwan", "2015:06:04", "9:21", "Físico");
+INSERT INTO acessa VALUES ("sicrano", "obiwan", "2015:06:04", "9:21", "Físico");
 INSERT INTO acessa VALUES ("monstro", "sagat", "2015:06:04", "10:00", "Físico");
 INSERT INTO acessa VALUES ("gaspar", "umbra", "2015:06:04", "10:29", "Físico");
 INSERT INTO acessa VALUES ("cnorris", "beta", "2015:06:04", "10:42", "SSH");
@@ -290,13 +292,13 @@ INSERT INTO email VALUES (5, "gandalf", "Tutorial de magia", "2015:06:02", "18:0
 
 INSERT INTO email VALUES (6, "fulano", "Link do vídeo legal", "2015:06:03", "7:20");
 INSERT INTO email VALUES (7, "nappa", "chunli deve estar quebrada!", "2015:06:03", "7:45");
-INSERT INTO email VALUES (8, "cicrano", "Gostei, haha", "2015:06:03", "8:21");
+INSERT INTO email VALUES (8, "sicrano", "Gostei, haha", "2015:06:03", "8:21");
 INSERT INTO email VALUES (9, "cnorris", "Obrigado por avisar", "2015:06:03", "9:37");
 INSERT INTO email VALUES (10, "cnorris", "PC na corredor com defeito", "2015:06:03", "9:44");
 INSERT INTO email VALUES (11, "tiopatinhas", "chunli consertada", "2015:06:03", "13:10");
 INSERT INTO email VALUES (12, "mario", "Alguém viu o Luigi?", "2015:06:03", "17:03");
 INSERT INTO email VALUES (13, "ssnape", "Discussão sobre tutorial", "2015:06:03", "18:00");
-INSERT INTO email VALUES (14, "gaspar", "Boo!!!", "2015:06:03", "9:34");
+INSERT INTO email VALUES (14, "gaspar", "Boo!!!", "2015:06:03", "21:34");
 
 INSERT INTO email VALUES (15, "fulano", "Sobre a academia", "2015:06:04", "9:30");
 INSERT INTO email VALUES (16, "monstro", "Pode vim fazer, cara!", "2015:06:04", "10:10");
@@ -311,13 +313,11 @@ INSERT INTO email VALUES (20, "ssnape", "Ingredientes da poção", "2015:06:05",
 INSERT INTO enviado_para VALUES (1, "tiopatinhas", "Para");
 INSERT INTO enviado_para VALUES (1, "gandalf", "Cc");
 INSERT INTO enviado_para VALUES (1, "cnorris", "Cc");
-
 INSERT INTO enviado_para VALUES (2, "nappa", "Para");
 INSERT INTO enviado_para VALUES (2, "cnorris", "Cco");
-
 INSERT INTO enviado_para VALUES (3, "gaspar", "Cco");
 INSERT INTO enviado_para VALUES (3, "fulano", "Cco");
-INSERT INTO enviado_para VALUES (3, "cicrano", "Cco");
+INSERT INTO enviado_para VALUES (3, "sicrano", "Cco");
 INSERT INTO enviado_para VALUES (3, "tiopatinhas", "Cco");
 INSERT INTO enviado_para VALUES (3, "monstro", "Cco");
 INSERT INTO enviado_para VALUES (3, "cirno", "Cco");
@@ -328,47 +328,30 @@ INSERT INTO enviado_para VALUES (3, "newton", "Cco");
 INSERT INTO enviado_para VALUES (3, "mario", "Cco");
 INSERT INTO enviado_para VALUES (3, "ssnape", "Cco");
 INSERT INTO enviado_para VALUES (3, "gandalf", "Cco");
-
 INSERT INTO enviado_para VALUES (4, "mario", "Para");
 INSERT INTO enviado_para VALUES (4, "cirno", "Cc");
-
 INSERT INTO enviado_para VALUES (5, "ssnape", "Para");
-
-INSERT INTO enviado_para VALUES (6, "cicrano", "Para");
-
+INSERT INTO enviado_para VALUES (6, "sicrano", "Para");
 INSERT INTO enviado_para VALUES (7, "tiopatinhas", "Para");
 INSERT INTO enviado_para VALUES (7, "gandalf", "Cc");
 INSERT INTO enviado_para VALUES (7, "cnorris", "Cc");
-
 INSERT INTO enviado_para VALUES (8, "fulano", "Para");
-
 INSERT INTO enviado_para VALUES (9, "nappa", "Para");
-
 INSERT INTO enviado_para VALUES (10, "tiopatinhas", "Para");
 INSERT INTO enviado_para VALUES (10, "gandalf", "Cc");
-
 INSERT INTO enviado_para VALUES (11, "cnorris", "Para");
 INSERT INTO enviado_para VALUES (11, "gandalf", "Cc");
 INSERT INTO enviado_para VALUES (11, "nappa", "Cc");
-
 INSERT INTO enviado_para VALUES (12, "mugiwara", "Para");
 INSERT INTO enviado_para VALUES (12, "newton", "Cco");
-INSERT INTO enviado_para VALUES (12, "cicrano", "Cco");
-
+INSERT INTO enviado_para VALUES (12, "sicrano", "Cco");
 INSERT INTO enviado_para VALUES (13, "gandalf", "Para");
-
 INSERT INTO enviado_para VALUES (14, "mugiwara", "Para");
-
 INSERT INTO enviado_para VALUES (15, "monstro", "Para");
-
 INSERT INTO enviado_para VALUES (16, "fulano", "Para");
-
 INSERT INTO enviado_para VALUES (17, "tiopatinhas", "Para");
 INSERT INTO enviado_para VALUES (17, "gandalf", "Cc");
 INSERT INTO enviado_para VALUES (17, "cnorris", "Cc");
-
 INSERT INTO enviado_para VALUES (18, "gaspar", "Para");
-
 INSERT INTO enviado_para VALUES (19, "ssnape", "Para");
-
 INSERT INTO enviado_para VALUES (20, "mario", "Para");
