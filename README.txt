@@ -10,7 +10,9 @@ Integrantes:
 |   VISÂO GERAL   |
 +-----------------+
 
-Citaremos aqui um resumo geral dos arquivos presentes neste trabalho.
+Sistema utilizado: MySQL
+
+Resumo geral dos arquivos presentes neste trabalho:
 
 brModelo/
 =========
