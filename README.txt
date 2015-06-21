@@ -14,17 +14,12 @@ Citaremos aqui um resumo geral dos arquivos presentes neste trabalho.
 
 brModelo/
 =========
-
-  - **conceitual.brM**: Contém o projeto conceitual do BD.
-
+  - **conceitual.brM**: Contém o projeto conceitual do BD;
   - **logico.brM**: Contém o projeto lógico do BD.
 
 sql/
 ====
-
-  - **fisico.sql**: Contém o projeto físico. Inclui a criação do BD, das tabelas e 
-                    a inserção de tuplas.
-
+  - **fisico.sql**: Contém o projeto físico. Inclui a criação do BD, das tabelas e a inserção de tuplas;
   - **consulta.sql**: Contém exemplos de consultas para serem usadas no projeto físico.
 
 +-------------------------------+
